@@ -9,10 +9,13 @@
 		var mantisData = new Array();
 		
 		function performCommand(event) {
+			console.log("perfoming command: " + event.command);
 			if (event.command == "copy_from_mantis") {
+				console.log("copy data");
 				safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("mantisData", "");	
-			} else if (event.command == "add_from_mantis") {
-			
+			} else if (event.command == "add_from_mantis" && mantisData.length > 0) {
+				console.log("insert data: " + mantisData);
+				safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("insertMantisData", mantisData);	
 			}
 		}
 		
@@ -50,7 +53,7 @@
 			   	}
 			} else if (theMessageEvent.name === "mantisData") {
 				mantisData = theMessageEvent.message;
-				mantisData["id"] = mantisID;
+				mantisData[3] = mantisID;
 				console.log("mantisData found");
 			}
 		}
