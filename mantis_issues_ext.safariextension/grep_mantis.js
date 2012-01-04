@@ -59,13 +59,14 @@ function findCol(name) {
 function findMantisData() {
 	console.log("find mantisData");
 	// TODO language
-	var data = [findCol(dataFields_en[0]), findCol(dataFields_en[1]), findCol(dataFields_en[2])];
+	var data = [findCol(dataFields_de[0]), findCol(dataFields_de[1]), findCol(dataFields_de[2])];
 	safari.self.tab.dispatchMessage("mantisData",data);
 }
 
 function insertMantisData(data_array) {
-	document.getElementById("issue_title").value = data_array[0];
-	var body = data_array[1] + "\n" + data_array[2];
+	var summary_without_id = data_array[0].substr(data_array[0].indexOf(":")+1).trim();
+	document.getElementById("issue_title").value = summary_without_id;
+	var body = "\n\n\n\n>_Mantis Info_:\n\n>" + data_array[1] + "\n\n>" + data_array[2] + "\n\n>[ID: " + data_array[3] + "](" + data_array[4] + ")";
 	document.getElementsByTagName("textarea")[0].value = body;	
 }
 

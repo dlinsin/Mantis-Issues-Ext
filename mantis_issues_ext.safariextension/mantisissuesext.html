@@ -54,6 +54,7 @@
 			} else if (theMessageEvent.name === "mantisData") {
 				mantisData = theMessageEvent.message;
 				mantisData[3] = mantisID;
+				mantisData[4] = safari.application.activeBrowserWindow.activeTab.url;
 				console.log("mantisData found");
 			}
 		}
