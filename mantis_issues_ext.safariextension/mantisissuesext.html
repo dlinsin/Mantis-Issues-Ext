@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Mantis Github Issues</title>
+	<script type="text/javascript" charset="utf-8">			
+		
+		var mantisID = "";
+		var mantisData = new Array();
+		
+		function performCommand(event) {
+			if (event.command == "copy_from_mantis") {
+				safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("mantisData", "");	
+			} else if (event.command == "add_from_mantis") {
+			
+			}
+		}
+		
+		function currentSiteNewIssue() {
+			var url = safari.application.activeBrowserWindow.activeTab.url;
+			var github_issue_pattern = new RegExp("https://github.com/.*/issues/new");
+			return github_issue_pattern.test(url);
+		}		
+		
+		function performValidate(event) {
+			console.log("validate");
+
+			if (event.command === "copy_from_mantis" && mantisID != "") {
+				event.target.disabled = false;
+			} else if (event.command === "copy_from_mantis" && mantisID == "") {
+				event.target.disabled = true;
+			} else if (event.command === "add_from_mantis") {
+				if (currentSiteNewIssue()) {
+					event.target.disabled = false;
+				} else {
+					event.target.disabled = true;
+				}
+			}
+		}
+		
+		function performMessage(theMessageEvent) {
+			console.log("message received: " + theMessageEvent.name + "/" + theMessageEvent.message);
+			if(theMessageEvent.name === "mantisID") {
+			   	if (theMessageEvent.message && theMessageEvent.message != "" && theMessageEvent.message != "not found") {
+			   		mantisID = theMessageEvent.message;
+			   		console.log("mantisID found");
+			   	} else {
+			   		mantisID = "";
+			   		console.log("mantisID not found");
+			   	}
+			} else if (theMessageEvent.name === "mantisData") {
+				mantisData = theMessageEvent.message;
+				mantisData["id"] = mantisID;
+				console.log("mantisData found");
+			}
+		}
+		
+		function handleMenu() {
+			console.log("tab activated");
+			safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("mantisID", "");	
+		}
+		
+		safari.application.addEventListener("command", performCommand, false);
+		safari.application.addEventListener("validate", performValidate, false);
+		safari.application.addEventListener("message", performMessage,false);		
+		safari.application.addEventListener("activate", handleMenu, true);
+	</script>
+</head>
+<body>
+
+</body>
+</html>
