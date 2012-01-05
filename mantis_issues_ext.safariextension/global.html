@@ -43,7 +43,7 @@
 		
 		function performMessage(theMessageEvent) {
 			console.log("message received: " + theMessageEvent.name + "/" + theMessageEvent.message);
-			if(theMessageEvent.name === "mantisID") {
+			if(theMessageEvent.name == "mantisID") {
 			   	if (theMessageEvent.message && theMessageEvent.message != "" && theMessageEvent.message != "not found") {
 			   		mantisID = theMessageEvent.message;
 			   		console.log("mantisID found");
@@ -51,11 +51,15 @@
 			   		mantisID = "";
 			   		console.log("mantisID not found");
 			   	}
-			} else if (theMessageEvent.name === "mantisData") {
+			} else if (theMessageEvent.name == "mantisData") {
 				mantisData = theMessageEvent.message;
 				mantisData[3] = mantisID;
 				mantisData[4] = safari.application.activeBrowserWindow.activeTab.url;
 				console.log("mantisData found");
+			} else if (theMessageEvent.name == "performInsert") {
+				if (currentSiteNewIssue() && mantisData.length > 0) {
+					safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("insertMantisData", mantisData);
+				}				
 			}
 		}
 		

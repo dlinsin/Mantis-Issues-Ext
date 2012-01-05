@@ -33,6 +33,7 @@ function IDColExists() {
 
 // finds the Mantis ID and dispatches it back to the global page
 function findMantisID() {
+	shortcut.remove("Ctrl+Shift+M");
 	console.log("find mantisID");
 	if (IDColExists()) {
 		console.log("found ID column");
@@ -40,7 +41,10 @@ function findMantisID() {
 		if (mantisID == "") {
 			safari.self.tab.dispatchMessage("mantisID","not found");	
 		} else {
-			safari.self.tab.dispatchMessage("mantisID",mantisID);	
+			safari.self.tab.dispatchMessage("mantisID",mantisID);
+			shortcut.add("Ctrl+Shift+M",function() {
+				findMantisData();
+			});	
 		}
 	} else {
 		console.log("didn't find ID column");
@@ -122,3 +126,6 @@ function performMessage(theMessageEvent) {
 }
 
 safari.self.addEventListener("message", performMessage, false);
+shortcut.add("Ctrl+Shift+I",function() {
+	safari.self.tab.dispatchMessage("performInsert","");
+});	
