@@ -1,6 +1,11 @@
+/*
+  Mantis related functions
+ */
+ 
 var dataFields_de = ["Zusammenfassung", "Beschreibung", "Zusätzliche Information"];
 var dataFields_en = ["Summary", "Description", "Additional Information"];
 
+// find the actual ID column and returns its value
 function findIDVal() {
 	var items = document.getElementsByTagName("tr");
 
@@ -13,7 +18,8 @@ function findIDVal() {
 	return "";
 }
 
-function findIDCol() {
+// checks if the ID column exists
+function IDColExists() {
 	var items = document.getElementsByTagName("td");
 
 	for (i=0; i < items.length; i++) {
@@ -25,9 +31,10 @@ function findIDCol() {
 	return false;
 }
 
+// finds the Mantis ID and dispatches it back to the global page
 function findMantisID() {
 	console.log("find mantisID");
-	if (findIDCol()) {
+	if (IDColExists()) {
 		console.log("found ID column");
 		var mantisID = findIDVal();
 		if (mantisID == "") {
@@ -41,6 +48,8 @@ function findMantisID() {
 	}
 }
 
+// iterates through "tr" tags and finds the column with the content matching the passed name
+// it then returns the next column's content 
 function findCol(name) {
 	var items = document.getElementsByTagName("tr");
 
@@ -56,6 +65,9 @@ function findCol(name) {
 	return "";
 }
 
+// finds the mantis data of the columns defined in dataFields_en/_de 
+// and dispatches it back to the global page mantisissuesext.html
+// Note: first German then English
 function findMantisData() {
 	console.log("find mantisData");
 	var summary = findCol(dataFields_de[0]);
@@ -73,6 +85,12 @@ function findMantisData() {
 	safari.self.tab.dispatchMessage("mantisData",new Array());
 }
 
+/*
+  Github issues related functions
+ */
+
+// inserts the data passed in the array into the "new github issue" page 
+// data_array: 0 = title, 1 = description, 2 = additional info, 3 = ID, 4 = Mantis Issue URL
 function insertMantisData(data_array) {
 	// set title
 	var summary_without_id = data_array[0].substr(data_array[0].indexOf(":")+1).trim();
@@ -84,6 +102,10 @@ function insertMantisData(data_array) {
 				additional_info_with_blockquote + "\n\n>[ID: " + data_array[3] + "](" + data_array[4] + ")";
 	document.getElementsByTagName("textarea")[0].value = body;	
 }
+
+/*
+  Common stuff
+ */
 
 function performMessage(theMessageEvent) {
 	console.log("message received");	
