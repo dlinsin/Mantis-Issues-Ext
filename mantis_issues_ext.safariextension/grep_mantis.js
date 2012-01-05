@@ -6,7 +6,7 @@ function findIDVal() {
 
 	for (i=0; i < items.length; i++) {
 		if (items[i].className == "row-1") {								
-			return items[i].firstChild.innerHTML;
+			return items[i].firstChild.innerText;
 		}
 	}
 	
@@ -17,7 +17,7 @@ function findIDCol() {
 	var items = document.getElementsByTagName("td");
 
 	for (i=0; i < items.length; i++) {
-		if (items[i].className == "category" && items[i].innerHTML == "ID") {								
+		if (items[i].className == "category" && items[i].innerText == "ID") {								
 			return true;
 		}
 	}
@@ -47,8 +47,8 @@ function findCol(name) {
 	for (i=0; i < items.length; i++) {
 		if (items[i].className == "row-1" || items[i].className == "row-2") {
 			var col = items[i].firstChild; 
-			if (col.className == "category" && col.innerHTML == name) {								
-				return col.nextSibling.innerHTML;
+			if (col.className == "category" && col.innerText == name) {								
+				return col.nextSibling.innerText;
 			}
 		}		
 	}
