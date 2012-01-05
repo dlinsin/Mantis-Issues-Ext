@@ -74,9 +74,14 @@ function findMantisData() {
 }
 
 function insertMantisData(data_array) {
+	// set title
 	var summary_without_id = data_array[0].substr(data_array[0].indexOf(":")+1).trim();
 	document.getElementById("issue_title").value = summary_without_id;
-	var body = "\n\n\n\n>_Mantis Info_:\n\n>" + data_array[1] + "\n\n>" + data_array[2] + "\n\n>[ID: " + data_array[3] + "](" + data_array[4] + ")";
+	// set body
+	var desc_with_blockquote = data_array[1].replace(/\n\n/g, "\n\n>");
+	var additional_info_with_blockquote = data_array[2].replace(/\n\n/g, "\n\n>");
+	var body = "\n\n\n\n_Mantis Info_:\n\n>" + desc_with_blockquote + "\n\n>" + 
+				additional_info_with_blockquote + "\n\n>[ID: " + data_array[3] + "](" + data_array[4] + ")";
 	document.getElementsByTagName("textarea")[0].value = body;	
 }
 
