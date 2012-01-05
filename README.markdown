@@ -35,6 +35,13 @@ _Add Mantis Info_ which will set the following Mantis infos:
 Alternatively you can use the keyboard shortcut _SHIFT+CTRL+I_ to add the information to the 
 new issue directly.
 
+## Known Issues
+
+Unfortunately Mantis doesn't support HTML id attributes for their content. As a workaround 
+the Mantis site is being parsed and the script looks for the column content such as "Summary". 
+Since Mantis can be localized, the script takes that into consideration. However, at the moment it 
+only can extract information from German or English Mantis installations. 
+
 ## Issues and Feature Requests
 
 Please report issues via GitHub's issue tracker.
