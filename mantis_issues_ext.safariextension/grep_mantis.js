@@ -58,9 +58,19 @@ function findCol(name) {
 
 function findMantisData() {
 	console.log("find mantisData");
-	// TODO language
-	var data = [findCol(dataFields_de[0]), findCol(dataFields_de[1]), findCol(dataFields_de[2])];
-	safari.self.tab.dispatchMessage("mantisData",data);
+	var summary = findCol(dataFields_de[0]);
+	if (summary != "") {
+		data = [summary, findCol(dataFields_de[1]), findCol(dataFields_de[2])];
+		safari.self.tab.dispatchMessage("mantisData",data);
+		return;
+	}  
+	summary = findCol(dataFields_en[0]);
+	if (summary != "") {
+		data = [summary, findCol(dataFields_en[1]), findCol(dataFields_en[2])];
+		safari.self.tab.dispatchMessage("mantisData",data);
+		return;
+	}
+	safari.self.tab.dispatchMessage("mantisData",new Array());
 }
 
 function insertMantisData(data_array) {
