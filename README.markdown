@@ -16,11 +16,11 @@ and double click to install it.
 A right click anywhere on the site will bring up the context menu item _Copy Mantis Info_. 
 Clicking it will extract the following information:
 
-* ID
-* Summary
-* Description
-* Additional Information
-* URL
+  * ID
+  * Summary
+  * Description
+  * Additional Information
+  * URL
 
 Alternatively you can use the keyboard shortcut _SHIFT+CTRL+M_ to extract the information 
 directly.
@@ -29,8 +29,8 @@ directly.
 bring up the context menu by right clicking anywhere on the site. Click on the menu item 
 _Add Mantis Info_ which will set the following Mantis infos:
 
-* the title to Summary
-* a block quote containing the Description, Additional Information and the ID as a link to the URL of the issue
+  * the title to Summary
+  * a block quote containing the Description, Additional Information and the ID as a link to the URL of the issue
 
 Alternatively you can use the keyboard shortcut _SHIFT+CTRL+I_ to add the information to the 
 new issue directly.
