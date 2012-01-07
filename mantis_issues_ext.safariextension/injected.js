@@ -4,6 +4,10 @@
  
 var dataFields_de = ["Zusammenfassung", "Beschreibung", "Zusätzliche Information"];
 var dataFields_en = ["Summary", "Description", "Additional Information"];
+var ctrl;
+var t;
+var s;
+
 
 // find the actual ID column and returns its value
 function findIDVal() {
@@ -69,11 +73,18 @@ function findCol(name) {
 	return "";
 }
 
+function addOverlay() {
+	ctrl = getBusyOverlay("viewport", {color: 'black', opacity: 0.5, text: 'Copying...', style: 'font-weight: bold;font-family: Helvetica;color: black;'});
+	t = setTimeout("ctrl.settext('Done!')", 400);
+	s = setTimeout("ctrl.remove()", 600);
+}
+
 // finds the mantis data of the columns defined in dataFields_en/_de 
 // and dispatches it back to the global page mantisissuesext.html
 // Note: first German then English
 function findMantisData() {
 	console.log("find mantisData");
+	addOverlay();
 	var summary = findCol(dataFields_de[0]);
 	if (summary != "") {
 		data = [summary, findCol(dataFields_de[1]), findCol(dataFields_de[2])];

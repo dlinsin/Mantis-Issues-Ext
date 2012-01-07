@@ -49,4 +49,4 @@ Please report issues via GitHub's issue tracker.
 ## License
 
 Mantis Issues Ext is licensed under the Apache 2 License, expect for shortcuts.js which is 
-licenses under BSD. 
+licenses under BSD and cvi_busy_lib.js which is under the [Netzgestade Non-commercial Software License Agreement](http://www.netzgesta.de/cvi/LICENSE.html). 

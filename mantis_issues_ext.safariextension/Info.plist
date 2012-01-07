@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Context Menu Items</key>
@@ -43,6 +43,7 @@
 			<key>End</key>
 			<array>
 				<string>shortcuts.js</string>
+				<string>cvi_busy_lib.js</string>
 				<string>injected.js</string>
 			</array>
 		</dict>
