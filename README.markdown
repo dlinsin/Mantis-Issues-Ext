@@ -7,7 +7,7 @@ Written by [David Linsin](http://dlinsin.github.com), January 2012.
 
 ## Installation
 
-Download the [latest version](https://github.com/downloads/dlinsin/Mantis-Issues-Ext/mantis_issues_ext-1.1.safariextz) of the Safari Extension 
+Download the [latest version](https://github.com/downloads/dlinsin/Mantis-Issues-Ext/mantis_issues_ext-1.2.safariextz) of the Safari Extension 
 and double click to install it.
 
 ## Usage
