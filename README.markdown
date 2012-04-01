@@ -1,7 +1,7 @@
 # Mantis Issues Ext
 
-A __Safari Extension__ which extracts information from a [Mantis bugtracking system](http://www.mantisbt.org/) 
-issue and adds it to a [GitHub issue](https://github.com/dlinsin/Mantis-Issues-Ext/issues).
+A __Safari Extension__ which extracts information from an issue of a [Mantis bugtracking system](http://www.mantisbt.org/) 
+and adds it to a [GitHub issue](https://github.com/dlinsin/Mantis-Issues-Ext/issues).
 
 Written by [David Linsin](http://dlinsin.github.com), January 2012.
 
