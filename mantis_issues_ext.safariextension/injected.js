@@ -108,8 +108,7 @@ function findMantisData() {
 // data_array: 0 = title, 1 = description, 2 = additional info, 3 = ID, 4 = Mantis Issue URL
 function insertMantisData(data_array) {
 	// set title
-	var summary_without_id = data_array[0].substr(data_array[0].indexOf(":")+1).trim();
-	document.getElementById("issue_title").value = summary_without_id;
+	document.getElementById("issue_title").value = data_array[0];
 	// set body
 	var desc_with_blockquote = data_array[1].replace(/\n\n/g, "\n\n>");
 	var additional_info_with_blockquote = data_array[2].replace(/\n\n/g, "\n\n>");
