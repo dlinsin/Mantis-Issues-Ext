@@ -53,8 +53,8 @@
 			   	}
 			} else if (theMessageEvent.name == "mantisData") {
 				mantisData = theMessageEvent.message;
-				mantisData[3] = mantisID;
-				mantisData[4] = safari.application.activeBrowserWindow.activeTab.url;
+				mantisData[8] = mantisID;
+				mantisData[9] = safari.application.activeBrowserWindow.activeTab.url;
 				console.log("mantisData found");
 			} else if (theMessageEvent.name == "performInsert") {
 				if (currentSiteNewIssue() && mantisData.length > 0) {

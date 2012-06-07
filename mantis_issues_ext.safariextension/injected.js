@@ -2,8 +2,8 @@
   Mantis related functions
  */
  
-var dataFields_de = ["Zusammenfassung", "Beschreibung", "Zusätzliche Information"];
-var dataFields_en = ["Summary", "Description", "Additional Information"];
+var dataFields_de = ["Zusammenfassung", "Beschreibung", "Zusätzliche Informationen", "Rechnertyp", "Betriebssystem", "BS-Version", "Produktversion", "Zielversion"];
+var dataFields_en = ["Summary", "Description", "Additional Information", "Platform", "OS", "OS Version", "Product Version", "Target Version"];
 var ctrl;
 var t;
 var s;
@@ -63,10 +63,13 @@ function findCol(name) {
 
 	for (i=0; i < items.length; i++) {
 		if (items[i].className == "row-1" || items[i].className == "row-2") {
-			var col = items[i].firstChild; 
-			if (col.className == "category" && col.innerText == name) {								
+			var cols = items[i].childNodes;
+			for (j=0; j < cols.length; j++) {
+			  var col = cols[j]
+			  if (col.className == "category" && col.innerText == name) {								
 				return col.nextSibling.innerText;
-			}
+			  }
+			}			
 		}		
 	}
 	
@@ -87,13 +90,13 @@ function findMantisData() {
 	addOverlay();
 	var summary = findCol(dataFields_de[0]);
 	if (summary != "") {
-		data = [summary, findCol(dataFields_de[1]), findCol(dataFields_de[2])];
+		data = [summary, findCol(dataFields_de[1]), findCol(dataFields_de[2]), findCol(dataFields_de[3]), findCol(dataFields_de[4]), findCol(dataFields_de[5]), findCol(dataFields_de[6]), findCol(dataFields_de[7])];
 		safari.self.tab.dispatchMessage("mantisData",data);
 		return;
 	}  
 	summary = findCol(dataFields_en[0]);
 	if (summary != "") {
-		data = [summary, findCol(dataFields_en[1]), findCol(dataFields_en[2])];
+		data = [summary, findCol(dataFields_en[1]), findCol(dataFields_en[2]), findCol(dataFields_en[3]), findCol(dataFields_en[4]), findCol(dataFields_en[5]), findCol(dataFields_en[6]), findCol(dataFields_en[7])];
 		safari.self.tab.dispatchMessage("mantisData",data);
 		return;
 	}
@@ -105,15 +108,27 @@ function findMantisData() {
  */
 
 // inserts the data passed in the array into the "new github issue" page 
-// data_array: 0 = title, 1 = description, 2 = additional info, 3 = ID, 4 = Mantis Issue URL
+// data_array: 0 = title, 1 = description, 2 = additional info, 3 = Platform, 4 = OS, 5 = OS Version, 
+//             6 = Product Version, 7 = Target Version, 8 = ID, 9 = Mantis Issue URL
 function insertMantisData(data_array) {
 	// set title
 	document.getElementById("issue_title").value = data_array[0];
 	// set body
 	var desc_with_blockquote = data_array[1].replace(/\n\n/g, "\n\n>");
-	var additional_info_with_blockquote = data_array[2].replace(/\n\n/g, "\n\n>");
+	var additional_info_with_blockquote = "\n\n> _Additional Information_:\n" + data_array[2];
+    var platform_with_blockquote = "\n\n> _Platform_: " + data_array[3];
+    var os_with_blockquote = "\n\n> _OS_: " + data_array[4];
+    var os_version_with_blockquote = "\n\n> _OS Version_: " + data_array[5];
+    var product_version_with_blockquote = "\n\n> _Product Version_: " + data_array[6];    
+    var target_version_with_blockquote = "\n\n> _Target Version_: " + data_array[7];                
 	var body = "\n\n\n\n_Mantis Info_:\n\n>" + desc_with_blockquote + "\n\n>" + 
-				additional_info_with_blockquote + "\n\n>[ID: " + data_array[3] + "](" + data_array[4] + ")";
+				additional_info_with_blockquote + 
+				platform_with_blockquote + 
+				os_with_blockquote + 
+				os_version_with_blockquote +				
+				product_version_with_blockquote +  
+				target_version_with_blockquote + 
+				"\n\n>[ID: " + data_array[8] + "](" + data_array[9] + ")";
 	document.getElementsByTagName("textarea")[0].value = body;	
 }
 
