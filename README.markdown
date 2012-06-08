@@ -21,6 +21,11 @@ Clicking it will extract the following information:
   * Description
   * Additional Information
   * URL
+  * Platform
+  * OS
+  * OS Version
+  * Product Version
+  * Target Version
 
 Alternatively you can use the keyboard shortcut _SHIFT+CTRL+M_ to extract the information 
 directly.
@@ -30,7 +35,9 @@ bring up the context menu by right clicking anywhere on the site. Click on the m
 _Add Mantis Info_ which will set the following Mantis infos:
 
   * the title to Summary
-  * a block quote containing the Description, Additional Information and the ID as a link to the URL of the issue
+  * a block quote containing the Description, Additional Information
+  * the fields mentioned above in form of _column: value_ 
+  * the ID as a link to the URL of the issue
 
 Alternatively you can use the keyboard shortcut _SHIFT+CTRL+I_ to add the information to the 
 new issue directly.
