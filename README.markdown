@@ -7,7 +7,7 @@ Written by [David Linsin](http://dlinsin.github.com), January 2012.
 
 ## Installation
 
-Download the [latest version](https://github.com/downloads/dlinsin/Mantis-Issues-Ext/mantis_issues_ext-1.2.safariextz) of the Safari Extension 
+Download the [latest version](https://github.com/downloads/dlinsin/Mantis-Issues-Ext/mantis_issues_ext-1.4.safariextz) of the Safari Extension 
 and double click to install it.
 
 ## Usage
@@ -37,10 +37,18 @@ new issue directly.
 
 ## Known Issues
 
+### General
+
 Unfortunately Mantis doesn't support HTML id attributes for their content. As a workaround 
 the Mantis site is being parsed and the script looks for the column content such as "Summary". 
 Since Mantis can be localized, the script takes that into consideration. However, at the moment it 
 only can extract information from German or English Mantis installations. 
+
+### GitHub Issue Submit Button
+
+Under some circumstances the _Submit new Issue_ button on a GitHub issue might stay disabled after 
+inserting the Mantis information. As a workaround, you can simply add any character to the title of 
+the issue, that's the reason why it's being focused right after insertion.
 
 ## Issues and Feature Requests
 

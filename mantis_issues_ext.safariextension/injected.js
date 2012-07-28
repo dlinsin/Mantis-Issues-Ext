@@ -111,6 +111,7 @@ function findMantisData() {
 // data_array: 0 = title, 1 = description, 2 = additional info, 3 = Platform, 4 = OS, 5 = OS Version, 
 //             6 = Product Version, 7 = Target Version, 8 = ID, 9 = Mantis Issue URL
 function insertMantisData(data_array) {
+	document.getElementById("issue_title").focus();
 	// set title
 	document.getElementById("issue_title").value = data_array[0];
 	// set body
@@ -145,7 +146,7 @@ function performMessage(theMessageEvent) {
    		console.log("mantisData");
    		findMantisData();   		
    	} else if (theMessageEvent.name === "insertMantisData") {
-   		console.log("insertMantisData");
+   		console.log("insertMantisData: " + theMessageEvent.message);
    		insertMantisData(theMessageEvent.message);   		
    	}
 }
