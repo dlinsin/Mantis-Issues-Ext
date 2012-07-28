@@ -2,7 +2,7 @@
   Mantis related functions
  */
  
-var dataFields_de = ["Zusammenfassung", "Beschreibung", "Zusätzliche Informationen", "Rechnertyp", "Betriebssystem", "BS-Version", "Produktversion", "Zielversion"];
+var dataFields_de = ["Zusammenfassung", "Beschreibung", "Zusätzliche Information", "Rechnertyp", "Betriebssystem", "BS-Version", "Produktversion", "Zielversion"];
 var dataFields_en = ["Summary", "Description", "Additional Information", "Platform", "OS", "OS Version", "Product Version", "Target Version"];
 var ctrl;
 var t;
