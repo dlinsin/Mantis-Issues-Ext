@@ -2,7 +2,7 @@
   Mantis related functions
  */
  
-var dataFields_de = ["Zusammenfassung", "Beschreibung", "Zusätzliche Information", "Rechnertyp", "Betriebssystem", "BS-Version", "Produktversion", "Zielversion", "Reproduzierbar", "Priorität", "Auswirkung"];
+var dataFields_de = ["Zusammenfassung", "Beschreibung", "Zusätzliche Informationen", "Rechnertyp", "Betriebssystem", "BS-Version", "Produktversion", "Zielversion", "Reproduzierbar", "Priorität", "Auswirkung"];
 var dataFields_en = ["Summary", "Description", "Additional Information", "Platform", "OS", "OS Version", "Product Version", "Target Version", "Reproducibility", "Priority", "Severity"];
 var ctrl;
 var t;
@@ -116,7 +116,7 @@ function insertMantisData(data_array) {
 	document.getElementById("issue_title").value = data_array[0];
 	// set body
 	var desc_with_blockquote = data_array[1].replace(/\n\n/g, "\n\n>");
-	var additional_info_with_blockquote = "\n\n> _Additional Information_:\n" + data_array[2];
+	var additional_info_with_blockquote = "\n\n> _Additional Information_:\n" + data_array[2].replace(/\n\n/g, "\n\n>");
     var platform_with_blockquote = "\n\n> _Platform_: " + data_array[3];
     var os_with_blockquote = "\n\n> _OS_: " + data_array[4];
     var os_version_with_blockquote = "\n\n> _OS Version_: " + data_array[5];
